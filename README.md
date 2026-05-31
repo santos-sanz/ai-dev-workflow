@@ -2,7 +2,7 @@
 
 A compact workflow pack for building software with AI development agents such as Codex, Claude Code, OpenCode, and Cursor.
 
-The goal is not to recreate features that coding agents already provide. Modern agents already read repo instructions, edit files, run commands, manage approvals, expose plan/review modes, support skills or rules, and often ship PR workflows. This pack defines the thin process layer those tools do not reliably provide by default: when to clarify, what a decision-complete plan contains, how to keep implementation in verified vertical slices, what evidence belongs in debugging, and how to report assumptions and residual risk.
+The goal is not to recreate features that coding agents already provide. Modern agents already read repo instructions, edit files, run commands, manage approvals, expose plan/review modes, support skills or rules, and often ship PR workflows. This pack defines the thin process layer those tools do not reliably provide by default: when to clarify, what a decision-complete plan contains, when to preserve durable specs with OpenSpec, how to keep implementation in verified vertical slices, what evidence belongs in debugging, and how to report assumptions and residual risk.
 
 See [`NATIVE_CAPABILITIES.md`](./NATIVE_CAPABILITIES.md) for the current native-capability boundary and source links.
 
@@ -15,6 +15,7 @@ Use native agent features first. Use the smallest skill only for the process dis
 | Phase | Native feature to prefer | Pack responsibility | Skill |
 | --- | --- | --- | --- |
 | Clarify | Native chat, ask/read-only mode, question tools | Decide which questions actually change scope, behavior, interfaces, risk, or acceptance criteria | [`clarify-requirements`](./skills/engineering/clarify-requirements/SKILL.md) |
+| Spec | OpenSpec generated commands and skills when durable context is needed | Keep proposal, design, requirements, tasks, and archived specs reviewable in the repo | [`openspec`](./openspec) |
 | Plan | Codex subagents, Claude Plan mode, OpenCode Plan agent, Cursor Ask/Plan/custom modes | Define the required shape of a decision-complete plan and visible assumptions | [`plan-implementation`](./skills/engineering/plan-implementation/SKILL.md) |
 | Build | Agent file edits, terminal tools, test runners, run/verify commands | Keep implementation in one behavior-first vertical slice at a time | [`tdd-vertical-slice`](./skills/engineering/tdd-vertical-slice/SKILL.md) |
 | Debug | Native debug skills, subagents, terminal output, browser/app tools | Require reproduction, ranked hypotheses, targeted instrumentation, and regression evidence | [`diagnose-bug`](./skills/engineering/diagnose-bug/SKILL.md) |
@@ -27,11 +28,12 @@ Use native agent features first. Use the smallest skill only for the process dis
 1. **Ground in the repo.** Read the files, tests, docs, and git state that can answer factual questions.
 2. **Use native capabilities first.** Prefer the current agent's built-in plan mode, subagents, skills, diff review, command execution, memory, and PR integrations before creating custom workflow artifacts.
 3. **Clarify only what matters.** Ask questions only when the answer changes scope, behavior, interfaces, or risk.
-4. **Plan to a decision-complete level.** A different engineer or agent should be able to implement the plan without making product or architecture decisions.
-5. **Implement one vertical slice at a time.** Prefer behavior-first tests and fast feedback over broad speculative edits.
-6. **Keep evidence close.** Run the smallest meaningful check after each important step and report what passed or could not run.
-7. **Review against both spec and standards.** A change can be well-written and still solve the wrong problem.
-8. **Ship with a clean story.** The PR should explain intent, main changes, validation, and remaining risk.
+4. **Use OpenSpec when context must persist.** For non-trivial changes that need durable requirements, start with `/opsx:propose`, implement with `/opsx:apply`, and consolidate with `/opsx:archive`.
+5. **Plan to a decision-complete level.** A different engineer or agent should be able to implement the plan without making product or architecture decisions.
+6. **Implement one vertical slice at a time.** Prefer behavior-first tests and fast feedback over broad speculative edits.
+7. **Keep evidence close.** Run the smallest meaningful check after each important step and report what passed or could not run.
+8. **Review against both spec and standards.** A change can be well-written and still solve the wrong problem.
+9. **Ship with a clean story.** The PR should explain intent, main changes, validation, and remaining risk.
 
 ## Workflow Quality Gates
 
@@ -40,8 +42,9 @@ Use these gates to catch common blind spots before, during, and after work:
 - **Intent is explicit.** The agent can state the goal, affected users or callers, success criteria, constraints, assumptions, and out-of-scope work.
 - **Safety is checked.** The agent has inspected git state, protected unrelated user changes, and identified secrets, destructive commands, irreversible external side effects, and public interface changes before acting.
 - **Execution is sliced.** The work uses the smallest applicable skill, proceeds in vertical slices, and keeps a repeatable feedback loop close to each change.
-- **Compatibility is preserved.** `AGENTS.md` remains the source of truth, while Claude Code, OpenCode, Cursor, and plugin metadata stay synchronized with it.
-- **Verification is repeatable.** The agent records commands run, checks passed, checks skipped, and remaining risk instead of relying on manual confidence.
+- **Spec context persists when needed.** OpenSpec changes are used for durable proposals, requirements, tasks, and archives when chat-local planning would not be enough.
+- **Compatibility is preserved.** `AGENTS.md` remains the source of truth, while Codex, Claude Code, OpenCode, Cursor, OpenSpec generated surfaces, and plugin metadata stay synchronized with it.
+- **Verification is repeatable.** The agent records commands run, OpenSpec validation when specs change, checks passed, checks skipped, and remaining risk instead of relying on manual confidence.
 - **Continuity is durable.** Decisions, assumptions, residual risks, and next steps are captured in the plan, handoff, PR description, or final response.
 
 ## Agent Entrypoints
@@ -54,17 +57,22 @@ This repo includes lightweight entrypoints for common AI development tools:
 - [`opencode.md`](./opencode.md) gives OpenCode the same operating rules.
 - [`.claude-plugin/plugin.json`](./.claude-plugin/plugin.json) lists the stable skills for Claude-compatible skill installers.
 - [`.agents/skills`](./.agents/skills) exposes thin native skill adapters for agents that discover the open Agent Skills layout.
+- [`openspec`](./openspec) stores OpenSpec changes, archived changes, and consolidated specs.
+- [`.codex/skills`](./.codex/skills), [`.claude/commands`](./.claude/commands), [`.claude/skills`](./.claude/skills), [`.cursor/commands`](./.cursor/commands), [`.cursor/skills`](./.cursor/skills), [`.opencode/commands`](./.opencode/commands), and [`.opencode/skills`](./.opencode/skills) expose generated OpenSpec commands and skills.
 
 ## Maintenance Checks
 
-Run these checks after changing skills, entrypoints, or workflow documentation:
+Run these checks after changing skills, entrypoints, OpenSpec surfaces, or workflow documentation:
 
 ```bash
+openspec validate --all --strict --no-interactive
 python3 scripts/validate-workflow.py
 git diff --check
 ```
 
 [`scripts/validate-workflow.py`](./scripts/validate-workflow.py) verifies that skill front matter is valid, local Markdown links resolve, delegated entrypoints point back to `AGENTS.md`, skill references stay complete, and Claude plugin metadata matches the skill directories.
+
+OpenSpec CLI usage requires Node.js `20.19.0` or newer. The repo validation script does not require Node; it only checks the checked-in workflow contract.
 
 ## Skill Design Rules
 

@@ -19,6 +19,43 @@ ENTRYPOINTS = [
     ".claude-plugin/plugin.json",
 ]
 
+OPENSPEC_DIRS = [
+    "openspec/changes",
+    "openspec/changes/archive",
+    "openspec/specs",
+]
+
+OPENSPEC_FILES = [
+    ".codex/skills/openspec-apply-change/SKILL.md",
+    ".codex/skills/openspec-archive-change/SKILL.md",
+    ".codex/skills/openspec-explore/SKILL.md",
+    ".codex/skills/openspec-propose/SKILL.md",
+    ".claude/commands/opsx/apply.md",
+    ".claude/commands/opsx/archive.md",
+    ".claude/commands/opsx/explore.md",
+    ".claude/commands/opsx/propose.md",
+    ".claude/skills/openspec-apply-change/SKILL.md",
+    ".claude/skills/openspec-archive-change/SKILL.md",
+    ".claude/skills/openspec-explore/SKILL.md",
+    ".claude/skills/openspec-propose/SKILL.md",
+    ".cursor/commands/opsx-apply.md",
+    ".cursor/commands/opsx-archive.md",
+    ".cursor/commands/opsx-explore.md",
+    ".cursor/commands/opsx-propose.md",
+    ".cursor/skills/openspec-apply-change/SKILL.md",
+    ".cursor/skills/openspec-archive-change/SKILL.md",
+    ".cursor/skills/openspec-explore/SKILL.md",
+    ".cursor/skills/openspec-propose/SKILL.md",
+    ".opencode/commands/opsx-apply.md",
+    ".opencode/commands/opsx-archive.md",
+    ".opencode/commands/opsx-explore.md",
+    ".opencode/commands/opsx-propose.md",
+    ".opencode/skills/openspec-apply-change/SKILL.md",
+    ".opencode/skills/openspec-archive-change/SKILL.md",
+    ".opencode/skills/openspec-explore/SKILL.md",
+    ".opencode/skills/openspec-propose/SKILL.md",
+]
+
 TEXT_SURFACES = [
     "README.md",
     "AGENTS.md",
@@ -75,6 +112,16 @@ def validate_entrypoints(failures: list[str]) -> None:
     for path in ["CLAUDE.md", "opencode.md", ".cursor/rules/ai-dev-workflow.mdc"]:
         if (ROOT / path).is_file() and "AGENTS.md" not in read(path):
             fail(f"{path} must point agents back to AGENTS.md", failures)
+
+
+def validate_openspec_surfaces(failures: list[str]) -> None:
+    for path in OPENSPEC_DIRS:
+        if not (ROOT / path).is_dir():
+            fail(f"missing OpenSpec surface: {path}", failures)
+
+    for path in OPENSPEC_FILES:
+        if not (ROOT / path).is_file():
+            fail(f"missing OpenSpec generated file: {path}", failures)
 
 
 def validate_skill_contract(failures: list[str]) -> list[str]:
@@ -179,6 +226,7 @@ def main() -> int:
     failures: list[str] = []
 
     validate_entrypoints(failures)
+    validate_openspec_surfaces(failures)
     skill_dirs = validate_skill_contract(failures)
     validate_plugin_metadata(skill_dirs, failures)
     validate_skill_mentions(skill_dirs, failures)
