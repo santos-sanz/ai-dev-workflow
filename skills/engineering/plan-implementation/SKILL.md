@@ -7,6 +7,10 @@ description: Produce a decision-complete implementation plan before code changes
 
 Use this skill when a change is too large, risky, or ambiguous to implement directly.
 
+## Native Integration
+
+Use the active agent's native planning mechanism first, such as Codex subagents, Claude Plan mode, OpenCode Plan agent, or Cursor Ask/Plan/custom modes. This skill defines the content and acceptance criteria for the plan; it is not a replacement for native read-only planning controls.
+
 ## Workflow
 
 1. **Inspect the system.**

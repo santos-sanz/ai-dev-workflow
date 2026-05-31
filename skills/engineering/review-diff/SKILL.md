@@ -7,6 +7,10 @@ description: Review a branch, PR, or working tree against the intended spec and 
 
 Use this skill when reviewing changes before merge or before handing work back to a user.
 
+## Native Integration
+
+Use native diff viewers, review UI, code-review skills, PR checks, and subagents for the mechanics. This skill defines what makes the review useful: findings first, severity, file/line evidence, spec coverage, standards, missing tests, and residual risk.
+
 ## Workflow
 
 1. **Choose the comparison point.**

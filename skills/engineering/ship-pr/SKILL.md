@@ -7,6 +7,10 @@ description: Prepare completed work for a pull request with final verification, 
 
 Use this skill when the implementation is complete and the user wants the work committed, pushed, and opened as a pull request.
 
+## Native Integration
+
+Use native git, GitHub, PR, branch, and review integrations when the active agent provides them. This skill defines the shipping checks: intended files only, final verification, concise PR story, compatibility notes, assumptions, and known risks.
+
 ## Workflow
 
 1. **Confirm scope.**

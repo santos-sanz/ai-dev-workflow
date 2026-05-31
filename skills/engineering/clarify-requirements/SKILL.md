@@ -7,6 +7,10 @@ description: Interview the user until goal, scope, constraints, success criteria
 
 Use this skill when the request is underspecified, high-risk, product-heavy, or likely to be misimplemented without more context.
 
+## Native Integration
+
+Use the active agent's native chat, Ask/read-only mode, question tool, or planning surface to gather context. This skill only defines which questions are worth asking and what a usable brief must contain.
+
 ## Workflow
 
 1. **Ground first.**

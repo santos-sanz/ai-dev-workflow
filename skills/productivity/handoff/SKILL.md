@@ -7,6 +7,10 @@ description: Summarize active work so another agent or future session can contin
 
 Use this skill when work will continue in another session, another agent, or after a long pause.
 
+## Native Integration
+
+Use native memory, checkpoints, conversation history, chat export, background-agent status, and PR/session links when they are enough. Create a handoff only when context must survive crossing tools, agents, branches, or sessions where native continuity is not reliable.
+
 ## Workflow
 
 1. **Summarize the goal.**

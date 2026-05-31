@@ -7,6 +7,10 @@ description: Build features or fixes one behavior-first vertical slice at a time
 
 Use this skill when implementing behavior that can be verified with tests or another repeatable feedback loop.
 
+## Native Integration
+
+Use native file-editing, terminal, browser, run, verify, and test tools for the mechanics. This skill owns the implementation cadence: one observable behavior, one feedback signal, one minimal implementation, then cleanup.
+
 ## Principles
 
 - Test public behavior, not implementation details.

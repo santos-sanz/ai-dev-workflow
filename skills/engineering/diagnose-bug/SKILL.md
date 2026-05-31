@@ -7,6 +7,10 @@ description: Diagnose bugs, flakes, and regressions through reproduce, minimize,
 
 Use this skill when something is broken, failing, flaky, slow, or otherwise not understood.
 
+## Native Integration
+
+Use native debug skills, subagents, terminal output, browser tools, traces, and logs when they exist. This skill defines the evidence standard: reproduce the real symptom, minimize it, test ranked hypotheses, instrument deliberately, and lock down the fix.
+
 ## Workflow
 
 1. **Build a feedback loop.**

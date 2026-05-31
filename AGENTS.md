@@ -6,7 +6,9 @@ Use this repo as a workflow pack for AI-assisted software development. Keep the 
 
 - Read the repo before asking questions that the repo can answer.
 - Ask only questions that change scope, behavior, interfaces, risk, or acceptance criteria.
+- Use native agent features before workflow-pack substitutes: plan modes, subagents, built-in skills, diff review, command execution, memory, checkpoints, and PR integrations.
 - Prefer the smallest applicable skill in `skills/`.
+- Treat skills as process guidance, not as replacements for native tools. If the active agent already has a safe native mechanism, use it and apply the skill's acceptance criteria around it.
 - Do not start implementation until the goal, success criteria, and constraints are clear enough to avoid rework.
 - Check the working tree before editing. Protect unrelated user changes and never mix them into commits or handoffs.
 - Build in vertical slices and keep a fast feedback loop running.
@@ -23,6 +25,14 @@ Use this repo as a workflow pack for AI-assisted software development. Keep the 
 - Review branches or diffs with [`review-diff`](./skills/engineering/review-diff/SKILL.md).
 - Preserve context with [`handoff`](./skills/productivity/handoff/SKILL.md).
 - Commit, push, and open PRs with [`ship-pr`](./skills/engineering/ship-pr/SKILL.md).
+
+## Native Integration
+
+- Check [`NATIVE_CAPABILITIES.md`](./NATIVE_CAPABILITIES.md) before adding a workflow artifact that might duplicate an agent feature.
+- Codex and OpenCode can discover thin adapters in [`.agents/skills`](./.agents/skills); those adapters point back to the canonical skills in `skills/`.
+- Claude Code should use `CLAUDE.md`, native skills, bundled `/debug` and `/code-review`, Plan mode, hooks, and subagents where available.
+- Cursor should use native Agent/Ask/Manual modes, project rules, memories, checkpoints, diff review, and background agents where available.
+- Add custom scripts, hooks, or commands only when a deterministic repo-specific check is missing.
 
 ## Documentation Discipline
 

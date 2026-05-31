@@ -44,6 +44,10 @@ _Avoid_: permission check when the risk is broader than tool access
 A concrete criterion that must be satisfied before work moves to the next phase, such as explicit success criteria or a repeatable verification command.
 _Avoid_: best practice when the criterion is required for this workflow
 
+**Native Capability Boundary**:
+The line between what an agent or editor already provides as a built-in feature and what this workflow pack should define as process guidance.
+_Avoid_: reimplementation plan, custom framework
+
 **Handoff**:
 A compact summary that lets another agent or future session continue the work without replaying the whole conversation.
 _Avoid_: transcript, dump
@@ -58,4 +62,5 @@ _Avoid_: transcript, dump
 - A **Quality Gate** catches a blind spot before the workflow advances.
 - A **Compatibility Contract** keeps tool entrypoints aligned around the same **Skills**.
 - A **Safety Check** protects the user and repo before an **Agent** acts.
+- A **Native Capability Boundary** prevents the **Workflow Pack** from duplicating agent or editor features.
 - A **Handoff** preserves unresolved context when the work cannot finish in one session.
