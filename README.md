@@ -30,6 +30,17 @@ Use the smallest skill that fits the current job. Skills can be used by a human 
 6. **Review against both spec and standards.** A change can be well-written and still solve the wrong problem.
 7. **Ship with a clean story.** The PR should explain intent, main changes, validation, and remaining risk.
 
+## Workflow Quality Gates
+
+Use these gates to catch common blind spots before, during, and after work:
+
+- **Intent is explicit.** The agent can state the goal, affected users or callers, success criteria, constraints, assumptions, and out-of-scope work.
+- **Safety is checked.** The agent has inspected git state, protected unrelated user changes, and identified secrets, destructive commands, irreversible external side effects, and public interface changes before acting.
+- **Execution is sliced.** The work uses the smallest applicable skill, proceeds in vertical slices, and keeps a repeatable feedback loop close to each change.
+- **Compatibility is preserved.** `AGENTS.md` remains the source of truth, while Claude Code, OpenCode, Cursor, and plugin metadata stay synchronized with it.
+- **Verification is repeatable.** The agent records commands run, checks passed, checks skipped, and remaining risk instead of relying on manual confidence.
+- **Continuity is durable.** Decisions, assumptions, residual risks, and next steps are captured in the plan, handoff, PR description, or final response.
+
 ## Agent Entrypoints
 
 This repo includes lightweight entrypoints for common AI development tools:
@@ -39,6 +50,17 @@ This repo includes lightweight entrypoints for common AI development tools:
 - [`.cursor/rules/ai-dev-workflow.mdc`](./.cursor/rules/ai-dev-workflow.mdc) exposes the workflow to Cursor.
 - [`opencode.md`](./opencode.md) gives OpenCode the same operating rules.
 - [`.claude-plugin/plugin.json`](./.claude-plugin/plugin.json) lists the stable skills for Claude-compatible skill installers.
+
+## Maintenance Checks
+
+Run these checks after changing skills, entrypoints, or workflow documentation:
+
+```bash
+python3 scripts/validate-workflow.py
+git diff --check
+```
+
+[`scripts/validate-workflow.py`](./scripts/validate-workflow.py) verifies that skill front matter is valid, local Markdown links resolve, delegated entrypoints point back to `AGENTS.md`, skill references stay complete, and Claude plugin metadata matches the skill directories.
 
 ## Skill Design Rules
 
