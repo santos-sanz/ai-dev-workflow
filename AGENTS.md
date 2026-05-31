@@ -7,6 +7,7 @@ Use this repo as a workflow pack for AI-assisted software development. Keep the 
 - Read the repo before asking questions that the repo can answer.
 - Ask only questions that change scope, behavior, interfaces, risk, or acceptance criteria.
 - Use native agent features before workflow-pack substitutes: plan modes, subagents, built-in skills, diff review, command execution, memory, checkpoints, and PR integrations.
+- When an installed upstream `mattpocock/skills` skill directly matches the task, use it where the active agent can invoke it safely. Fall back to this repo's adapted skills when upstream skills are unavailable, too broad, or less aligned with these instructions.
 - Prefer the smallest applicable skill in `skills/`.
 - Treat skills as process guidance, not as replacements for native tools. If the active agent already has a safe native mechanism, use it and apply the skill's acceptance criteria around it.
 - Use OpenSpec for non-trivial changes that need durable, reviewable requirements across sessions, agents, or PRs. For small clear edits, native planning plus the smallest applicable skill is enough.
@@ -34,6 +35,7 @@ Use this repo as a workflow pack for AI-assisted software development. Keep the 
 - Claude Code should use `CLAUDE.md`, native skills, bundled `/debug` and `/code-review`, Plan mode, hooks, and subagents where available.
 - Cursor should use native Agent/Ask/Manual modes, project rules, memories, checkpoints, diff review, and background agents where available.
 - OpenSpec is available as the persistent spec layer in [`openspec`](./openspec), with generated command and skill surfaces for Codex, Claude Code, Cursor, and OpenCode. Use `/opsx:propose`, `/opsx:apply`, and `/opsx:archive` where supported, or the equivalent generated command name for the active agent.
+- `mattpocock/skills` is an optional upstream skill pack, not a vendored dependency. Do not install, vendor, or configure it unless the user explicitly asks for that external setup.
 - Add custom scripts, hooks, or commands only when a deterministic repo-specific check is missing.
 
 ## Documentation Discipline

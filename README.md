@@ -6,7 +6,7 @@ The goal is not to recreate features that coding agents already provide. Modern 
 
 See [`NATIVE_CAPABILITIES.md`](./NATIVE_CAPABILITIES.md) for the current native-capability boundary and source links.
 
-This pack is inspired by the small, composable skill style in [mattpocock/skills](https://github.com/mattpocock/skills), but it is intentionally adapted for this repo instead of vendored wholesale.
+This pack is inspired by the small, composable skill style in [mattpocock/skills](https://github.com/mattpocock/skills), but it is intentionally adapted for this repo instead of vendored wholesale. When those upstream skills are already installed in the active agent, use the matching upstream skill first when it fits the task; otherwise use this repo's local skills.
 
 ## Workflow
 
@@ -22,6 +22,12 @@ Use native agent features first. Use the smallest skill only for the process dis
 | Review | Native diff viewers, code-review skills, review UI, PR checks | Prioritize actionable findings against spec and repo standards | [`review-diff`](./skills/engineering/review-diff/SKILL.md) |
 | Handoff | Native memory, checkpoints, conversation history, background-agent status | Create a portable summary only when work crosses sessions, tools, or agents | [`handoff`](./skills/productivity/handoff/SKILL.md) |
 | Ship | Native git/PR commands, GitHub integrations, PR UI | Confirm intended scope, verification evidence, assumptions, and residual risk | [`ship-pr`](./skills/engineering/ship-pr/SKILL.md) |
+
+## Upstream Skill Preference
+
+Use installed `mattpocock/skills` skills opportunistically when they directly match the work, especially `grill-me` or `grill-with-docs` for alignment, `tdd` for red-green-refactor implementation, `diagnose` for debugging, `to-prd` or `to-issues` for product breakdown, `zoom-out` for broader code context, and `improve-codebase-architecture` for architecture review.
+
+If the upstream skill is not installed or would conflict with this repo's instructions, use the local adapted skill in `skills/` instead. Do not run `npx skills@latest add mattpocock/skills`, `/setup-matt-pocock-skills`, or copy upstream skill files unless the user explicitly asks for that setup.
 
 ## Default Operating Loop
 

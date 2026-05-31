@@ -9,6 +9,8 @@ Follow the workflow in `AGENTS.md`.
 
 Use Cursor's native Agent, Ask, Manual, and Custom modes, project rules, memories, checkpoints, terminal integration, background agents, and diff review before creating workflow-pack substitutes.
 
+If upstream `mattpocock/skills` skills are installed in Cursor, use the matching skill when it directly fits the task. Do not install or configure that upstream pack unless the user asks for setup.
+
 Use the generated OpenSpec commands and skills in `.cursor/commands/` and `.cursor/skills/` when a change needs durable proposal, design, spec, task, or archive artifacts. Keep OpenSpec complementary to Cursor's native modes and review tools.
 
 - Use `skills/engineering/clarify-requirements/SKILL.md` for unclear requests.

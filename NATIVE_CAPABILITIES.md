@@ -23,6 +23,7 @@ Use this file to avoid rebuilding capabilities that the target coding agent alre
 - Generic PR creation when the current agent already integrates with GitHub or `gh`.
 - Generic custom-command frameworks when the agent already has slash commands or command files.
 - OpenSpec proposal, design, spec, task, command, or archive mechanics when the OpenSpec CLI and generated agent surfaces already provide them.
+- Installed upstream skill-pack behavior, including `mattpocock/skills`, when the active agent can already discover and invoke those skills.
 
 ## What This Pack Owns
 
@@ -34,7 +35,8 @@ Use this file to avoid rebuilding capabilities that the target coding agent alre
 - Portable handoffs: concise state that survives crossing tools, agents, branches, or sessions.
 - Shipping hygiene: intended files only, final verification, clear PR story, assumptions, and known risk.
 - OpenSpec use criteria: when durable proposal/design/spec/task/archive context is worth the overhead, and how that context fits the native-first workflow.
+- External skill-pack boundaries: when to prefer an available upstream skill, when to fall back to local adapted skills, and when installation would require explicit user approval.
 
 ## Integration Rule
 
-When a native feature covers the mechanics, use it and apply the relevant skill only as acceptance criteria. Use OpenSpec when requirements and decisions need durable repo context beyond a single chat or native plan. Create new scripts, commands, hooks, or agent configs only for deterministic repo-specific checks or missing native surfaces.
+When a native feature covers the mechanics, use it and apply the relevant skill only as acceptance criteria. Use an installed `mattpocock/skills` skill when it directly fits the task and is available through the active agent; otherwise use this repo's adapted skills. Use OpenSpec when requirements and decisions need durable repo context beyond a single chat or native plan. Create new scripts, commands, hooks, or agent configs only for deterministic repo-specific checks or missing native surfaces.
