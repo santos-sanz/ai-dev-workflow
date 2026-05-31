@@ -8,7 +8,9 @@ Use this repo as a workflow pack for AI-assisted software development. Keep the 
 - Ask only questions that change scope, behavior, interfaces, risk, or acceptance criteria.
 - Prefer the smallest applicable skill in `skills/`.
 - Do not start implementation until the goal, success criteria, and constraints are clear enough to avoid rework.
+- Check the working tree before editing. Protect unrelated user changes and never mix them into commits or handoffs.
 - Build in vertical slices and keep a fast feedback loop running.
+- Treat destructive commands, secret exposure, irreversible external side effects, and public interface changes as scope-changing unless the user explicitly approved them.
 - Report commands run, checks passed, and checks that could not run.
 - Never hide assumptions. State them in plans, handoffs, PR descriptions, or final responses.
 
@@ -27,3 +29,16 @@ Use this repo as a workflow pack for AI-assisted software development. Keep the 
 - Keep [`CONTEXT.md`](./CONTEXT.md) as a glossary only.
 - Keep skills small and focused on recurring behavior.
 - Add new skills only when the workflow repeats often enough to justify a public interface.
+- Keep tool entrypoints synchronized: `AGENTS.md` is the source of truth, while `CLAUDE.md`, `opencode.md`, Cursor rules, and Claude plugin metadata must not drift from it.
+- Run `python3 scripts/validate-workflow.py` after adding, renaming, moving, or removing skills or entrypoints.
+
+## Blind Spot Review
+
+Before changing this workflow pack, explicitly check for gaps in:
+
+- **Intent:** goal, users, success criteria, constraints, and out-of-scope work.
+- **Safety:** git state, user changes, secrets, destructive operations, and external side effects.
+- **Execution:** the smallest applicable skill, vertical-slice boundaries, and feedback loop.
+- **Compatibility:** Codex, Claude Code, OpenCode, Cursor, and installer metadata.
+- **Verification:** local links, skill front matter, entrypoint synchronization, and commands that prove the change.
+- **Continuity:** assumptions, residual risks, and handoff notes when work cannot finish in one session.
