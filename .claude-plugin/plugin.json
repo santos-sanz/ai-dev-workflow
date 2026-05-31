@@ -1,0 +1,12 @@
+{
+  "name": "ai-dev-workflow",
+  "skills": [
+    "./skills/engineering/clarify-requirements",
+    "./skills/engineering/plan-implementation",
+    "./skills/engineering/tdd-vertical-slice",
+    "./skills/engineering/diagnose-bug",
+    "./skills/engineering/review-diff",
+    "./skills/engineering/ship-pr",
+    "./skills/productivity/handoff"
+  ]
+}

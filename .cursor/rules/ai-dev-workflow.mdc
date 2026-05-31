@@ -1,0 +1,16 @@
+---
+description: AI dev workflow pack rules for Cursor
+alwaysApply: true
+---
+
+# AI Dev Workflow Pack
+
+Follow the workflow in `AGENTS.md`.
+
+- Use `skills/engineering/clarify-requirements/SKILL.md` for unclear requests.
+- Use `skills/engineering/plan-implementation/SKILL.md` before substantial code changes.
+- Use `skills/engineering/tdd-vertical-slice/SKILL.md` for behavior-first implementation.
+- Use `skills/engineering/diagnose-bug/SKILL.md` for bugs, failures, and regressions.
+- Use `skills/engineering/review-diff/SKILL.md` for branch or PR review.
+- Use `skills/productivity/handoff/SKILL.md` when context must survive a session boundary.
+- Use `skills/engineering/ship-pr/SKILL.md` before committing, pushing, or opening a PR.
