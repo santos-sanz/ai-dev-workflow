@@ -2,7 +2,7 @@
 
 This repo already carries local, adapted skills for clarification, planning, vertical slices, debugging, review, handoff, and shipping. The README credits `mattpocock/skills` as inspiration, but the repo deliberately avoids vendoring that upstream pack.
 
-The upstream pack contains skills such as `grill-me`, `grill-with-docs`, `tdd`, `diagnose`, `to-prd`, `to-issues`, `zoom-out`, and `improve-codebase-architecture`. Its quickstart uses `npx skills@latest add mattpocock/skills` and a setup skill, which is an external install/configuration action.
+The upstream pack contains skills such as `grill-me`, `grill-with-docs`, `tdd`, `diagnose`, `to-prd`, `to-issues`, `zoom-out`, and `improve-codebase-architecture`. Its quickstart uses `pnpx skills@latest add mattpocock/skills` and a setup skill, which is an external install/configuration action.
 
 ## Goals / Non-Goals
 

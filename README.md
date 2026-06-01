@@ -30,7 +30,7 @@ Use installed `mattpocock/skills` skills opportunistically when they directly ma
 
 For unusually strict maintainability review, the Cursor Team Kit [`thermo-nuclear-code-quality-review`](https://github.com/cursor/plugins/blob/main/cursor-team-kit/skills/thermo-nuclear-code-quality-review/SKILL.md) skill is a useful reference lens: look for structural simplification, abstraction quality, file growth, spaghetti branching, boundary cleanliness, and canonical ownership before accepting a diff as merely "working."
 
-If the upstream skill is not installed or would conflict with this repo's instructions, use the local adapted skill in `skills/` instead. Do not run `npx skills@latest add mattpocock/skills`, `/setup-matt-pocock-skills`, or copy upstream skill files unless the user explicitly asks for that setup.
+If the upstream skill is not installed or would conflict with this repo's instructions, use the local adapted skill in `skills/` instead. Do not run `pnpx skills@latest add mattpocock/skills`, `/setup-matt-pocock-skills`, or copy upstream skill files unless the user explicitly asks for that setup.
 
 ## Default Operating Loop
 
