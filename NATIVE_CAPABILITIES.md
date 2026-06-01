@@ -30,12 +30,13 @@ Use this file to avoid rebuilding capabilities that the target coding agent alre
 - Clarification criteria: ask only questions that change scope, behavior, interfaces, risk, constraints, or acceptance criteria.
 - Decision-complete plans: document target behavior, affected contracts, verification, assumptions, and rollout notes.
 - Vertical-slice discipline: one observable behavior, one feedback signal, one minimal implementation, then cleanup.
+- Testing strategy: choose unit, integration, and end-to-end tests by risk; avoid mock-heavy false confidence and coverage theater.
 - Evidence-based debugging: reproduce, minimize, rank hypotheses, instrument deliberately, fix, and lock down regression coverage.
 - Review standards: findings first, severity, file/line evidence, spec coverage, missing tests, and residual risk.
 - Portable handoffs: concise state that survives crossing tools, agents, branches, or sessions.
 - Shipping hygiene: intended files only, final verification, clear PR story, assumptions, and known risk.
 - OpenSpec use criteria: when durable proposal/design/spec/task/archive context is worth the overhead, and how that context fits the native-first workflow.
-- External skill-pack boundaries: when to prefer an available upstream skill, when to fall back to local adapted skills, and when installation would require explicit user approval.
+- External skill-pack boundaries: when to prefer an available upstream skill or external reference such as Cursor Team Kit's `thermo-nuclear-code-quality-review`, when to fall back to local adapted skills, and when installation would require explicit user approval.
 
 ## Integration Rule
 
