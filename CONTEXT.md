@@ -48,6 +48,10 @@ _Avoid_: best practice when the criterion is required for this workflow
 The line between what an agent or editor already provides as a built-in feature and what this workflow pack should define as process guidance.
 _Avoid_: reimplementation plan, custom framework
 
+**Routine**:
+A proactive agent workflow that runs a saved task from native agent infrastructure on a schedule or event trigger.
+_Avoid_: cron job when the agent runtime owns hosting, session state, and trigger handling
+
 **Handoff**:
 A compact summary that lets another agent or future session continue the work without replaying the whole conversation.
 _Avoid_: transcript, dump
@@ -63,4 +67,5 @@ _Avoid_: transcript, dump
 - A **Compatibility Contract** keeps tool entrypoints aligned around the same **Skills**.
 - A **Safety Check** protects the user and repo before an **Agent** acts.
 - A **Native Capability Boundary** prevents the **Workflow Pack** from duplicating agent or editor features.
+- A **Routine** applies the **Native Capability Boundary** to proactive, scheduled, or event-driven agent work.
 - A **Handoff** preserves unresolved context when the work cannot finish in one session.

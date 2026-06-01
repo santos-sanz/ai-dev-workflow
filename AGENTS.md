@@ -34,6 +34,7 @@ Use this repo as a workflow pack for AI-assisted software development. Keep the 
 - Check [`NATIVE_CAPABILITIES.md`](./NATIVE_CAPABILITIES.md) before adding a workflow artifact that might duplicate an agent feature.
 - Codex and OpenCode can discover thin adapters in [`.agents/skills`](./.agents/skills); those adapters point back to the canonical skills in `skills/`.
 - Claude Code should use `CLAUDE.md`, native skills, bundled `/debug` and `/code-review`, Plan mode, hooks, and subagents where available.
+- Claude Code Routines should be treated as a native proactive-agent surface for recurring or event-driven work. Before building custom cron jobs, webhook runners, or headless hosted agents, decide the trigger, connected context, and steerability path, then use Routines when Anthropic-managed scheduling, API, or GitHub triggers fit the task.
 - Cursor should use native Agent/Ask/Manual modes, project rules, memories, checkpoints, diff review, and background agents where available.
 - OpenSpec is available as the persistent spec layer in [`openspec`](./openspec), with generated command and skill surfaces for Codex, Claude Code, Cursor, and OpenCode. Use `/opsx:propose`, `/opsx:apply`, and `/opsx:archive` where supported, or the equivalent generated command name for the active agent.
 - `mattpocock/skills` is an optional upstream skill pack, not a vendored dependency. Do not install, vendor, or configure it unless the user explicitly asks for that external setup.
