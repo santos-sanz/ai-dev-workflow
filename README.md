@@ -45,6 +45,20 @@ If the upstream skill is not installed or would conflict with this repo's instru
 9. **Review against both spec and standards.** A change can be well-written and still solve the wrong problem.
 10. **Ship with a clean story.** The PR should explain intent, main changes, validation, and remaining risk.
 
+## Proactive Agent Workflows
+
+Claude Code Routines move agent work from reactive prompting toward teammate-like automation: a routine can notice a schedule or event, start a remote Claude Code session, and work against configured repos and connectors without a developer keeping a local session alive.
+
+Use that native surface before building custom proactive-agent infrastructure. Self-built runners usually add hosting, persistence, authentication, trigger plumbing, and real-time supervision problems that the workflow pack should not reimplement when the agent already owns them.
+
+Before creating a routine, make these decisions explicit:
+
+- **Trigger:** when the work should run, such as weekly documentation review, a GitHub issue or PR event, a webhook, or a post-deploy API call.
+- **Context:** which repositories, connectors, monitoring tools, docs, or notification channels the agent needs.
+- **Steerability:** how humans or review agents can inspect, pause, resume, or correct the run before changes are trusted.
+
+Good routine candidates include weekly documentation drift checks that open PRs, deploy verifiers that inspect monitoring data after a release, and backlog triage jobs that summarize or prioritize incoming issues. Keep the same quality gates as interactive work: clear intent, scoped access, visible assumptions, repeatable verification, and reviewable output.
+
 ## Workflow Quality Gates
 
 Use these gates to catch common blind spots before, during, and after work:
