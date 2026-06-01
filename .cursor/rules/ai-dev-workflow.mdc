@@ -16,6 +16,7 @@ Use the generated OpenSpec commands and skills in `.cursor/commands/` and `.curs
 - Use `skills/engineering/clarify-requirements/SKILL.md` for unclear requests.
 - Use `skills/engineering/plan-implementation/SKILL.md` before substantial code changes.
 - Use `skills/engineering/tdd-vertical-slice/SKILL.md` for behavior-first implementation.
+- Use `skills/engineering/testing-strategy/SKILL.md` for test strategy, test selection, and confidence gaps.
 - Use `skills/engineering/diagnose-bug/SKILL.md` for bugs, failures, and regressions.
 - Use `skills/engineering/review-diff/SKILL.md` for branch or PR review.
 - Use `skills/productivity/handoff/SKILL.md` when context must survive a session boundary.

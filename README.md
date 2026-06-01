@@ -18,6 +18,7 @@ Use native agent features first. Use the smallest skill only for the process dis
 | Spec | OpenSpec generated commands and skills when durable context is needed | Keep proposal, design, requirements, tasks, and archived specs reviewable in the repo | [`openspec`](./openspec) |
 | Plan | Codex subagents, Claude Plan mode, OpenCode Plan agent, Cursor Ask/Plan/custom modes | Define the required shape of a decision-complete plan and visible assumptions | [`plan-implementation`](./skills/engineering/plan-implementation/SKILL.md) |
 | Build | Agent file edits, terminal tools, test runners, run/verify commands | Keep implementation in one behavior-first vertical slice at a time | [`tdd-vertical-slice`](./skills/engineering/tdd-vertical-slice/SKILL.md) |
+| Test | Native test runners, browser/app verification, coverage, containers, and CI | Choose tests that reduce real uncertainty and lock down behavior without brittle coverage theater | [`testing-strategy`](./skills/engineering/testing-strategy/SKILL.md) |
 | Debug | Native debug skills, subagents, terminal output, browser/app tools | Require reproduction, ranked hypotheses, targeted instrumentation, and regression evidence | [`diagnose-bug`](./skills/engineering/diagnose-bug/SKILL.md) |
 | Review | Native diff viewers, code-review skills, review UI, PR checks | Prioritize actionable findings against spec and repo standards | [`review-diff`](./skills/engineering/review-diff/SKILL.md) |
 | Handoff | Native memory, checkpoints, conversation history, background-agent status | Create a portable summary only when work crosses sessions, tools, or agents | [`handoff`](./skills/productivity/handoff/SKILL.md) |
@@ -26,6 +27,8 @@ Use native agent features first. Use the smallest skill only for the process dis
 ## Upstream Skill Preference
 
 Use installed `mattpocock/skills` skills opportunistically when they directly match the work, especially `grill-me` or `grill-with-docs` for alignment, `tdd` for red-green-refactor implementation, `diagnose` for debugging, `to-prd` or `to-issues` for product breakdown, `zoom-out` for broader code context, and `improve-codebase-architecture` for architecture review.
+
+For unusually strict maintainability review, the Cursor Team Kit [`thermo-nuclear-code-quality-review`](https://github.com/cursor/plugins/blob/main/cursor-team-kit/skills/thermo-nuclear-code-quality-review/SKILL.md) skill is a useful reference lens: look for structural simplification, abstraction quality, file growth, spaghetti branching, boundary cleanliness, and canonical ownership before accepting a diff as merely "working."
 
 If the upstream skill is not installed or would conflict with this repo's instructions, use the local adapted skill in `skills/` instead. Do not run `npx skills@latest add mattpocock/skills`, `/setup-matt-pocock-skills`, or copy upstream skill files unless the user explicitly asks for that setup.
 
@@ -37,9 +40,10 @@ If the upstream skill is not installed or would conflict with this repo's instru
 4. **Use OpenSpec when context must persist.** For non-trivial changes that need durable requirements, start with `/opsx:propose`, implement with `/opsx:apply`, and consolidate with `/opsx:archive`.
 5. **Plan to a decision-complete level.** A different engineer or agent should be able to implement the plan without making product or architecture decisions.
 6. **Implement one vertical slice at a time.** Prefer behavior-first tests and fast feedback over broad speculative edits.
-7. **Keep evidence close.** Run the smallest meaningful check after each important step and report what passed or could not run.
-8. **Review against both spec and standards.** A change can be well-written and still solve the wrong problem.
-9. **Ship with a clean story.** The PR should explain intent, main changes, validation, and remaining risk.
+7. **Choose tests by risk.** Use tests to reduce uncertainty, protect real contracts, and cover failure paths instead of chasing coverage percentages.
+8. **Keep evidence close.** Run the smallest meaningful check after each important step and report what passed or could not run.
+9. **Review against both spec and standards.** A change can be well-written and still solve the wrong problem.
+10. **Ship with a clean story.** The PR should explain intent, main changes, validation, and remaining risk.
 
 ## Workflow Quality Gates
 

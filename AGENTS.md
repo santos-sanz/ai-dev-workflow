@@ -23,6 +23,7 @@ Use this repo as a workflow pack for AI-assisted software development. Keep the 
 - Clarify unclear work with [`clarify-requirements`](./skills/engineering/clarify-requirements/SKILL.md).
 - Produce decision-complete plans with [`plan-implementation`](./skills/engineering/plan-implementation/SKILL.md).
 - Build behavior one slice at a time with [`tdd-vertical-slice`](./skills/engineering/tdd-vertical-slice/SKILL.md).
+- Design automated tests around real confidence with [`testing-strategy`](./skills/engineering/testing-strategy/SKILL.md).
 - Debug with evidence using [`diagnose-bug`](./skills/engineering/diagnose-bug/SKILL.md).
 - Review branches or diffs with [`review-diff`](./skills/engineering/review-diff/SKILL.md).
 - Preserve context with [`handoff`](./skills/productivity/handoff/SKILL.md).
@@ -36,6 +37,7 @@ Use this repo as a workflow pack for AI-assisted software development. Keep the 
 - Cursor should use native Agent/Ask/Manual modes, project rules, memories, checkpoints, diff review, and background agents where available.
 - OpenSpec is available as the persistent spec layer in [`openspec`](./openspec), with generated command and skill surfaces for Codex, Claude Code, Cursor, and OpenCode. Use `/opsx:propose`, `/opsx:apply`, and `/opsx:archive` where supported, or the equivalent generated command name for the active agent.
 - `mattpocock/skills` is an optional upstream skill pack, not a vendored dependency. Do not install, vendor, or configure it unless the user explicitly asks for that external setup.
+- Cursor Team Kit's [`thermo-nuclear-code-quality-review`](https://github.com/cursor/plugins/blob/main/cursor-team-kit/skills/thermo-nuclear-code-quality-review/SKILL.md) is a useful external review reference for strict maintainability checks; do not install, vendor, or configure it unless the user explicitly asks for that external setup.
 - Add custom scripts, hooks, or commands only when a deterministic repo-specific check is missing.
 
 ## Documentation Discipline
